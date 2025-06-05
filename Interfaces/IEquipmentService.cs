@@ -10,5 +10,8 @@ namespace Uninventory.Interfaces
     public Task<EquipmentDTO> SetEquipment(int EquipmentId, EquipmentDTO equipmentDTO);
 
     public Task<IEnumerable<EquipmentDTO>> GetEquipmentsByCategory(int? categoryId);
+
+    Task<IEnumerable<EquipmentDTO>> SearchByName(string name);
+
   }
 }

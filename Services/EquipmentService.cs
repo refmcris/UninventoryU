@@ -131,5 +131,18 @@ namespace Uninventory.Services
 
     }
 
+    public async Task<IEnumerable<EquipmentDTO>> SearchByName(string name)
+    {
+      var lowerName = name.ToLower();
+
+      var equipments = await _context.Equipment
+          .Include(e => e.Category)
+          .Where(e => e.Name.ToLower().Contains(lowerName))
+          .ToListAsync();
+
+      return equipments.Select(ToEquipmentDTO).ToList();
+    }
+
+
   }
 }
